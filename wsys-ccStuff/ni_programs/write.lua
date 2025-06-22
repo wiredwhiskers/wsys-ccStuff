@@ -1,0 +1,12 @@
+local file = arg[1]
+assert(file, "Specify Iota to write")
+local staff = peripheral.find("wand")
+local iotaT = fs.open("/iotas/"..file..".txt","r")
+local contents = iotaT.readAll()
+iotaT.close()
+local write = fs.open("/iotas/writeIota.txt","r")
+staff.pushStack(textutils.unserialize(contents))
+contents = write.readAll()
+write.close()
+staff.pushStack(textutils.unserialize(contents))
+staff.runPattern() 
